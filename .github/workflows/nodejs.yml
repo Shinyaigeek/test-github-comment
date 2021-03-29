@@ -1,0 +1,19 @@
+name: get preview s3 signed url
+
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  deploy:
+    if: github.event.issue.pull_request && github.event.comment.body == 'please-preview'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.set-target-branch.outputs.result }}
+      - name: Get Singed Preview Url 
+        id: preview_url
+        run: echo "asdf"
